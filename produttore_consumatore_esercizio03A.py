@@ -25,38 +25,87 @@ class ProduttoreThread(threading.Thread):
         super().__init__()
         self.idx = idx
 
+ def run(self)
+    global metti
+    for _ in range(6):
+      self.dato=genera_ordine()
+      self vuoto.acquire()
+      self mutexP.acquire()
+      i_metti(metti)
+      metti=(metti+1)%DIM_BUFFER
+      mutexP.release()
+ 
+    buffer[i_metti]= genera_ordine()
+    print(f"[SHOP_N] creato ordine{self.dato})
+    
+
+
+
     # DA IMPLEMENTARE (run)
-
-
-class ConsumatoreThread(threading.Thread):
+ class ConsumatoreThread(threading.Thread):
     def __init__(self, idx):
-        super().__init__()
-        self.idx = idx
+     super().__init__()
+     self.idx = idx
+
+    def run(self):
+     global togli
+
+     while True 
+     pieno.acquire()
+     mutexC.acquire()
+     i_togli=togli
+     togli=(togli+1)%DIM_BUFFER
+     mutexC.release()
+     dato=buffer[i_togli]
+
+     if dato is None
+     break
+
+print(f"[PACK_N]prepara{self.dato})
+
 
     # DA IMPLEMENTARE (run)
-
-
-def main():
+    def main():
     global metti
 
-    produttori = [ProduttoreThread(i + 1) for i in range(N_PRODUTTORI)]
-    consumatori = [ConsumatoreThread(i + 1) for i in range(N_CONSUMATORI)]
+    produttori = [ProduttoreThread(i + 1) for i in range(3)]
+    consumatori = [ConsumatoreThread(i + 1) for i in range(2)]
 
     # DA IMPLEMENTARE: start dei thread produttori e consumatori
+    for P in ProduttoreThread:
+    P.start()
 
+    for C in ConsumatoreThread:
+    C.start()
     # DA IMPLEMENTARE: join di tutti i produttori
+    for P in ProduttoreThread:
+    P.join()
 
     print("Tutti i canali hanno terminato. Chiusura addetti...")
 
     # Invia un messaggio None per ogni addetto.
-    for _ in range(N_CONSUMATORI):
+    for _ in range(3):
         # DA IMPLEMENTARE: inserire None nel buffer
+        buffer=none
         pass
 
     # DA IMPLEMENTARE: join di tutti i consumatori
+    for C in ConsumatoreThreadThread:
+    C.join()
 
     print("Magazzino chiuso.")
 
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
+
+
+
+
+
