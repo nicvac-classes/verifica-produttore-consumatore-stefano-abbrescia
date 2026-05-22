@@ -41,7 +41,6 @@ class ProduttoreThread(threading.Thread):
 
 
 
-    # DA IMPLEMENTARE (run)
  class ConsumatoreThread(threading.Thread):
     def __init__(self, idx):
      super().__init__()
